@@ -36,6 +36,7 @@ export default function Home() {
         console.error('Erro ao buscar os posts:', error);
       }
     }
+    fetchData();
 }, []);
 
 
@@ -65,7 +66,7 @@ export default function Home() {
             <div>
                 <ul>
                     {
-                    // post.map(post => <li key={post.id}>{post.title}</li>)
+                     post.map(post => <li key={post.id}>{post.title}</li>)
                     }
                 </ul>
             </div>
