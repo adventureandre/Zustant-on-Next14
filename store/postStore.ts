@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { Post } from "../types";
 import { create } from "zustand";
 
 
-
-const prisma = new PrismaClient();
 
 type PostStore = {
     add: (post: Post) => Promise<number>
