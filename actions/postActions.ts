@@ -1,25 +1,22 @@
 "use server";
-import { v4 as uuidv4 } from 'uuid';
 import z from "zod"
 import { usePostStore } from '../store/postStore';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 const schema = z.object({
-    id: z.string(),
+    id: z.number().optional(),
     title: z.string(),
 })
 
-export async function submitForm(formData: FormData) {
+export async function submitForm(formData:{title: string}) {
 
     const parsedPost = schema.parse({
-        id: uuidv4(),
-        title: formData.get('title'),
+        title: formData.title,
     });
 
-
-    usePostStore.getState().add(parsedPost);
-    revalidatePath("/")
-    redirect(`/post/${parsedPost.id}`);
+    const postId = await usePostStore.getState().add(parsedPost);
+     revalidatePath("/")
+     redirect(`/post/${postId}`);
     
 }
