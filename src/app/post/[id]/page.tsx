@@ -1,3 +1,4 @@
+//pagina renderizada no lado do server ficou ok!
 import Link from "next/link";
 import { usePostStore } from "../../../../store/postStore";
 

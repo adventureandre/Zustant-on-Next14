@@ -32,6 +32,8 @@ export default function Home() {
       try{
         const allPosts =  await usePostStore.getState().getAllPosts();
         setPost(allPosts);
+        console.log("Posts", allPosts);
+        
       } catch(error){
         console.error('Erro ao buscar os posts:', error);
       }
