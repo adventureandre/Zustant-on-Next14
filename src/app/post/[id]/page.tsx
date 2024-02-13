@@ -4,14 +4,14 @@ import { usePostStore } from "../../../../store/postStore";
 
 
 interface Post{
-    id: number;
-    title: string | null;
+    id?: number;
+    title: string ;
 }
 
 export default async function Post({ params }: { params: { id: number } }) {
 
   
-const post:Post | null = await usePostStore.getState().getPost(params.id);
+const post= await usePostStore.getState().getPost(params.id);
     
 
     if (!post) return (
@@ -23,8 +23,8 @@ const post:Post | null = await usePostStore.getState().getPost(params.id);
     return (
         <>
             <div>
-                <h1 className="text-lg">{post?.id}</h1>
-                <p className="text-lg">{post?.title}</p>
+                <h1 className="text-lg">{post.id}</h1>
+                <p className="text-lg">{post.title}</p>
             </div>
         </>
     )
